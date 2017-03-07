@@ -26,6 +26,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         btn4= (Button) findViewById(R.id.btn4);
         btn5= (Button) findViewById(R.id.btn5);
         btn6= (Button) findViewById(R.id.btn6);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
+        btn5.setOnClickListener(this);
+        btn6.setOnClickListener(this);
     }
 
     @Override
