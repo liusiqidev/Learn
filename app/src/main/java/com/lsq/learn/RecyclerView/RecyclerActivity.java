@@ -19,6 +19,9 @@ public class RecyclerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
         initStudents();
+        /**
+         * 使用前需要先在Glade compile 'com.android.support:recyclerview-v7:25.2.0'
+         */
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         //水平竖直LinearLayoutManager网格GridLayoutManager瀑布流StaggeredGridLayoutManager
                                                                                             //第一个参数是竖直是列数，水平是行数，
