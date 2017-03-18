@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerView.RecyclerActivity"></activity>
+        <activity android:name=".RecyclerView.RecyclerActivity" />
+        <activity android:name=".Fragment.FragmentActivity" />
+        <activity android:name=".newsActivity.NewsContentActivity"></activity>
     </application>
 
 </manifest>
