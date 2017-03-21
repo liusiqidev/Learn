@@ -17,7 +17,7 @@
         </activity>
         <activity android:name=".RecyclerView.RecyclerActivity" />
         <activity android:name=".Fragment.FragmentActivity" />
-        <activity android:name=".newsActivity.NewsContentActivity"></activity>
+        <activity android:name=".newsActivity.NewsActivity"/>
     </application>
 
 </manifest>

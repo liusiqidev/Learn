@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.lsq.learn.Fragment.FragmentActivity;
 import com.lsq.learn.RecyclerView.RecyclerActivity;
-import com.lsq.learn.newsActivity.NewsContentActivity;
+import com.lsq.learn.newsActivity.NewsActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
     private Button btn1;
@@ -50,7 +50,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.btn3:
                 intent=new Intent();
-                intent.setClass(this, NewsContentActivity.class);
+                intent.setClass(this, NewsActivity.class);
                 break;
             case R.id.btn4:
                 break;
