@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.lsq.learn.Broadcasts.NetchangActivity;
 import com.lsq.learn.Fragment.FragmentActivity;
 import com.lsq.learn.RecyclerView.RecyclerActivity;
 import com.lsq.learn.newsActivity.NewsActivity;
@@ -53,6 +54,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 intent.setClass(this, NewsActivity.class);
                 break;
             case R.id.btn4:
+                intent=new Intent();
+                intent.setClass(this, NetchangActivity.class);
                 break;
             case R.id.btn5:
                 break;
