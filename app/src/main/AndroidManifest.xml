@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lsq.learn">
-    //获取网络状态
+    <!--普通权限-->
+    <!--获取网络状态-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    //允许开机启动的权限
+    <!--允许开机启动的权限-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- SD卡读取权限，用户写入离线定位数据-->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+
+    <!--危险权限-->
+    <!-- 这个权限用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- 这个权限用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <!-- 用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -19,20 +41,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyclerView.RecyclerActivity" />
-        <activity android:name=".Fragment.FragmentActivity" />
+        <activity android:name=".recyclerView.RecyclerActivity" />
+        <activity android:name=".fragment.FragmentActivity" />
         <activity android:name=".newsActivity.NewsActivity" />
-        <activity android:name=".Broadcasts.NetchangActivity" />
+        <activity android:name=".broadcast.NetchangActivity" />
+        <activity android:name=".save.saveActivity"/>
+        <activity android:name=".baiduMap.BaiduMapActivity"/>
+        <activity android:name=".phoneState.PhoneStateActivity"/>
+        <activity android:name=".permission.checkPermissionsActivity"/>
+        <activity android:name=".permission.PermissionsActivity"/>
+        <activity android:name=".ampm.AmPmActivity"/>
+        <activity android:name=".check.CheckActivity"/>
 
         <receiver
-            android:name=".Broadcasts.BootCompleteReceiver"
+            android:name=".broadcast.BootCompleteReceiver"
             android:enabled="true"
             android:exported="true">
-            <intent-filter>
+            <intent-filter android:priority="50">
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="com.lsq.learn.broadcasttest.MY_BROADCAST"/>
             </intent-filter>
         </receiver>
+        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
+        </service>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="4hLVSWLvHZCAArdmCbfGSv6AqOGjCNoT" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.lsq.learn.Fragment;
+package com.lsq.learn.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -1,4 +1,4 @@
-package com.lsq.learn.RecyclerView;
+package com.lsq.learn.recyclerView;
 
 /**
  * Created by lsq on 2017/3/7.

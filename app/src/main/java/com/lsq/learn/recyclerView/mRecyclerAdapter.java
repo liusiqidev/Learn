@@ -1,4 +1,4 @@
-package com.lsq.learn.RecyclerView;
+package com.lsq.learn.recyclerView;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

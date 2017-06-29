@@ -1,68 +1,151 @@
 package com.lsq.learn;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.lsq.learn.Broadcasts.NetchangActivity;
-import com.lsq.learn.Fragment.FragmentActivity;
-import com.lsq.learn.RecyclerView.RecyclerActivity;
+import com.lsq.learn.ampm.AmPmActivity;
+import com.lsq.learn.baiduMap.BaiduMapActivity;
+import com.lsq.learn.broadcast.NetchangActivity;
+import com.lsq.learn.check.CheckActivity;
+import com.lsq.learn.fragment.FragmentActivity;
+import com.lsq.learn.permission.checkPermissionsActivity;
+import com.lsq.learn.phoneState.PhoneStateActivity;
+import com.lsq.learn.recyclerView.RecyclerActivity;
 import com.lsq.learn.newsActivity.NewsActivity;
+import com.lsq.learn.save.saveActivity;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener{
-    private Button btn1;
-    private Button btn2;
-    private Button btn3;
-    private Button btn4;
-    private Button btn5;
-    private Button btn6;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.zip.Inflater;
 
+public class MainActivity extends BaseActivity{
+    private RecyclerView rec_main;
+    private List<String> datas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btn1= (Button) findViewById(R.id.btn1);
-        btn2= (Button) findViewById(R.id.btn2);
-        btn3= (Button) findViewById(R.id.btn3);
-        btn4= (Button) findViewById(R.id.btn4);
-        btn5= (Button) findViewById(R.id.btn5);
-        btn6= (Button) findViewById(R.id.btn6);
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
-        btn3.setOnClickListener(this);
-        btn4.setOnClickListener(this);
-        btn5.setOnClickListener(this);
-        btn6.setOnClickListener(this);
+        datas=new ArrayList<>();
+        datas.add("recycleRactivity");//0
+        datas.add("fragmentActivity");//1
+        datas.add("news");//2
+        datas.add("广播");//3
+        datas.add("保存文件");//4
+        datas.add("百度地图sdk获取位置信息");//5
+        datas.add("动态权限");//6
+        datas.add("获取手机信息");//7
+        datas.add("卸载应用");//8
+        datas.add("AmPm");//9
+        datas.add("获取版本号，文件下载显示进度");//10
+
+
+
+        rec_main= (RecyclerView) findViewById(R.id.rec_main);
+        rec_main.setLayoutManager(new LinearLayoutManager(this));
+        rec_main.setAdapter(new MainRecAdapter(datas));
+    }
+    //卸载应用程序   "package:"+你要卸载的应用程序包名
+    public void unstallApp(){
+        Intent uninstall_intent = new Intent();
+        uninstall_intent.setAction(Intent.ACTION_DELETE);
+        uninstall_intent.setData(Uri.parse("package:"+"com.lsq.learn"));
+        startActivity(uninstall_intent);
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent = null;
-        switch (v.getId()){
-            case R.id.btn1:
-                intent=new Intent();
-                intent.setClass(this, RecyclerActivity.class);
-                break;
-            case R.id.btn2:
-                intent=new Intent();
-                intent.setClass(this,FragmentActivity.class);
-                break;
-            case R.id.btn3:
-                intent=new Intent();
-                intent.setClass(this, NewsActivity.class);
-                break;
-            case R.id.btn4:
-                intent=new Intent();
-                intent.setClass(this, NetchangActivity.class);
-                break;
-            case R.id.btn5:
-                break;
-            case R.id.btn6:
-                break;
+
+    class MainRecAdapter extends RecyclerView.Adapter<MainRecAdapter.ViewHolder>{
+        List<String> datas;
+        Intent intent;
+        public MainRecAdapter(List<String> datas) {
+            this.datas = datas;
         }
-        if (intent!=null)
-        startActivity(intent);
+        @Override
+        public MainRecAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main,parent,false);
+            Button btn= (Button) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main,parent,false);
+            final ViewHolder holder=new ViewHolder(btn);
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("111", "onClick: "+holder.getAdapterPosition());
+                    switch (holder.getAdapterPosition()){
+                        case 0:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, RecyclerActivity.class);
+                            break;
+                        case 1:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, FragmentActivity.class);
+                            break;
+                        case 2:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, NewsActivity.class);
+                            break;
+                        case 3:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, NetchangActivity.class);
+                            break;
+                        case 4:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, saveActivity.class);
+                            break;
+                        case 5:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, BaiduMapActivity.class);
+                            break;
+                        case 6:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, checkPermissionsActivity.class);
+                            break;
+                        case 7:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, PhoneStateActivity.class);
+                            break;
+                        case 8:
+                            unstallApp();
+                            intent=null;
+                            break;
+                        case 9:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, AmPmActivity.class);
+                            break;
+                        case 10:intent=new Intent();
+                            intent.setClass(MainActivity.this, CheckActivity.class);
+                            break;
+                    }
+                    if (intent!=null)
+                        startActivity(intent);
+                }
+            });
+            return holder;
+        }
+
+        @Override
+        public void onBindViewHolder(MainRecAdapter.ViewHolder holder, int position) {
+            holder.btn.setText(datas.get(position));
+        }
+
+        @Override
+        public int getItemCount() {
+            return datas.size();
+        }
+
+
+        class ViewHolder extends RecyclerView.ViewHolder {
+            Button btn;
+            public ViewHolder(View itemView) {
+                super(itemView);
+                btn= (Button) itemView;
+            }
+        }
     }
 }
