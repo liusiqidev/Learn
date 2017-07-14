@@ -1,16 +1,25 @@
 package com.lsq.learn.check;
 
+import android.Manifest;
 import android.app.DownloadManager;
+import android.content.ComponentName;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -42,8 +51,8 @@ public class CheckActivity extends ButtonActivity {
     private static final int LOADMAIN = 1;// 加载主界面
     private static final int SHOWUPDATEDIALOG = 2;// 显示是否更新的对话框
     protected static final int ERROR = 3;// 错误统一代号
-//    private NumberProgressBar pb_download;// 下载最新版本apk的进度条
-
+    private DownloadService.DownLoadBinder downLoadBinder;
+    private static final String TAG = "CheckActivity";
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -85,16 +94,60 @@ public class CheckActivity extends ButtonActivity {
             return false;
         }
     });
+    private ServiceConnection connection= new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            downLoadBinder = (DownloadService.DownLoadBinder) service;
+            Log.d(TAG, "onServiceConnected: "+(downLoadBinder!=null));
+            downLoadBinder.getService().setCallBack(new DownloadService.callBack() {
+                @Override
+                public void onServiceProgress(int progress) {
+                    Log.d(TAG, "onServiceProgress: 回调成功");
+                }
+
+                @Override
+                public void onServiceSuccess() {
+                    Log.d(TAG, "onServiceSuccess: 回调成功");
+                }
+
+                @Override
+                public void onServicePaused() {
+                    Log.d(TAG, "onServicePaused: 回调成功");
+                }
+
+                @Override
+                public void onServiceFailed() {
+                    Log.d(TAG, "onServiceFailed: 回调成功");
+                }
+
+                @Override
+                public void onServiceCanceled() {
+                    Log.d(TAG, "onServiceCanceled: 回调成功");
+                }
+            });
+        }
+
+        @Override
+            public void onServiceDisconnected(ComponentName name) {
+
+            }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         datas = new ArrayList<>();
         datas.add("获取自身版本");
         datas.add("检查服务器版本");
-        datas.add("提示更新");
+        datas.add("获取安装包路径");
         datas.add("下载更新显示进度");
         setdatas(datas);
         super.onCreate(savedInstanceState);
+        Intent intent=new Intent(this,DownloadService.class);
+        startService(intent);
+        bindService(intent,connection,BIND_AUTO_CREATE);
+        if (ContextCompat.checkSelfPermission(CheckActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(CheckActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+        }
 
         setResponse(new Response() {
             @Override
@@ -107,18 +160,19 @@ public class CheckActivity extends ButtonActivity {
                         getServiceVersion();
                         break;
                     case 2:
+                        getAPKUrl();
                         break;
                     case 3:
-                        downloadAPK();
+                        Log.d(TAG, "response: startDownload"+(downLoadBinder!=null));
+                        if (downLoadBinder!=null){
+                            String url="http://192.168.101.162:7999/zdcj.apk";
+                            downLoadBinder.startDownload(url);
+                        }
                         break;
                 }
             }
         });
 
-    }
-
-    private void downloadAPK() {
-        DownloadManager.Request request=new DownloadManager.Request(Uri.parse(""));
 
     }
 
@@ -193,5 +247,23 @@ public class CheckActivity extends ButtonActivity {
                 .show();
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 1:
+                if (grantResults.length>0&&grantResults[0]!=PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "拒绝权限将无法使用权限", Toast.LENGTH_SHORT).show();
+                    finish();
 
+                }
+        }
+    }
+    private void getAPKUrl(){
+        showResults(getApplicationContext().getPackageResourcePath());
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(connection);
+    }
 }

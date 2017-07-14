@@ -1,0 +1,46 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    >
+
+    <Button
+        android:id="@+id/btnScan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="扫描条码/二维码" />
+
+    <EditText
+        android:id="@+id/editcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnScan"
+        android:layout_centerHorizontal="true"
+        />
+
+    <Button
+        android:id="@+id/btnQrcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editcode"
+        android:layout_centerHorizontal="true"
+        android:text="生成二维码" />
+
+    <Button
+        android:id="@+id/btnbarcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnQrcode"
+        android:layout_centerHorizontal="true"
+        android:text="生成条码" />
+
+    <ImageView
+        android:id="@+id/imgcode"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/btnbarcode"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

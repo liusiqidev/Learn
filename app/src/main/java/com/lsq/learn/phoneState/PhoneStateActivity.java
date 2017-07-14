@@ -31,6 +31,11 @@ public class PhoneStateActivity extends BaseActivity {
     private Handler handler;
     private static final String TAG = "PhoneStateActivity";
     private PhoneInfo phoneInfo;
+
+
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,12 @@ public class PhoneStateActivity extends BaseActivity {
                 return false;
             }
         });
+        MountedStorageFinder msf = new MountedStorageFinder(this);
+        List<MountedStorageFinder.StorageInfo> storagelist = msf.getStorageList();
+        for(MountedStorageFinder.StorageInfo storage:storagelist ) {
+            //if(sdcardPath.equals(storage.mountPath))
+//            getAllFilePath(storage.mountPath);
+        }
     }
 
     class PhoneStateRecAdapter extends RecyclerView.Adapter<PhoneStateRecAdapter.ViewHolder>{

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.lsq.learn.QRcode.QRcodeActivity;
 import com.lsq.learn.ampm.AmPmActivity;
 import com.lsq.learn.baiduMap.BaiduMapActivity;
 import com.lsq.learn.broadcast.NetchangActivity;
@@ -18,6 +19,7 @@ import com.lsq.learn.check.CheckActivity;
 import com.lsq.learn.fragment.FragmentActivity;
 import com.lsq.learn.permission.checkPermissionsActivity;
 import com.lsq.learn.phoneState.PhoneStateActivity;
+import com.lsq.learn.player.PlayerActivity;
 import com.lsq.learn.recyclerView.RecyclerActivity;
 import com.lsq.learn.newsActivity.NewsActivity;
 import com.lsq.learn.save.saveActivity;
@@ -29,7 +31,7 @@ import java.util.zip.Inflater;
 public class MainActivity extends BaseActivity{
     private RecyclerView rec_main;
     private List<String> datas;
-
+    private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,9 @@ public class MainActivity extends BaseActivity{
         datas.add("卸载应用");//8
         datas.add("AmPm");//9
         datas.add("获取版本号，文件下载显示进度");//10
+        datas.add("发送短信");//11
+        datas.add("扫描二维码");//12
+        datas.add("播放器");//13
 
 
 
@@ -118,15 +123,39 @@ public class MainActivity extends BaseActivity{
                             intent=new Intent();
                             intent.setClass(MainActivity.this, AmPmActivity.class);
                             break;
-                        case 10:intent=new Intent();
+                        case 10:
+                            intent=new Intent();
                             intent.setClass(MainActivity.this, CheckActivity.class);
                             break;
+                        case 11:
+                            intent=null;
+                            sendSMS("18210008209","11111111111111");
+                            break;
+                        case 12:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, QRcodeActivity.class);
+                            break;
+                        case 13:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, PlayerActivity.class);
+                            break;
+
                     }
                     if (intent!=null)
                         startActivity(intent);
                 }
             });
             return holder;
+        }
+        public void sendSMS(String phoneNumber,String message){
+            //获取短信管理器
+            android.telephony.SmsManager smsManager = android.telephony.SmsManager.getDefault();
+            //拆分短信内容（手机短信长度限制）
+            List<String> divideContents = smsManager.divideMessage(message);
+            for (String text : divideContents) {
+                Log.d(TAG, "sendSMS: ");
+                smsManager.sendTextMessage(phoneNumber, null, text, null, null);
+            }
         }
 
         @Override
