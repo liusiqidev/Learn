@@ -64,7 +64,7 @@
         <activity android:name=".phoneState.PhoneStateActivity"/>
         <activity android:name=".permission.checkPermissionsActivity"/>
         <activity android:name=".permission.PermissionsActivity"/>
-        <activity android:name=".ampm.AmPmActivity"/>
+        <activity android:name=".command.CommandActivity"/>
         <activity android:name=".check.CheckActivity"/>
         <activity android:name=".QRcode.QRcodeActivity"/>
         <activity android:name=".QRcode.CaptureActivity"/>

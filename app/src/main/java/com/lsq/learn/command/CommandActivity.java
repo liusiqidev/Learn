@@ -1,10 +1,9 @@
-package com.lsq.learn.ampm;
+package com.lsq.learn.command;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.lsq.learn.BaseActivity;
 import com.lsq.learn.ButtonActivity;
 
 import java.io.BufferedReader;
@@ -17,12 +16,14 @@ import java.util.List;
  * Created by lsq on 2017/6/26.
  */
 
-public class AmPmActivity extends ButtonActivity{
+public class CommandActivity extends ButtonActivity{
     List<String> data=new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         data.add("pm删除应用");
+        data.add("开始抓包");
+        data.add("停止抓包");
         setdatas(data);
         super.onCreate(savedInstanceState);
         setResponse(new Response() {
