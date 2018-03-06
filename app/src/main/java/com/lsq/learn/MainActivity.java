@@ -17,6 +17,7 @@ import com.lsq.learn.baiduMap.BaiduMapActivity;
 import com.lsq.learn.broadcast.NetchangActivity;
 import com.lsq.learn.check.CheckActivity;
 import com.lsq.learn.fragment.FragmentActivity;
+import com.lsq.learn.h5.HtmlfAct;
 import com.lsq.learn.permission.checkPermissionsActivity;
 import com.lsq.learn.phoneState.PhoneStateActivity;
 import com.lsq.learn.player.PlayerActivity;
@@ -51,6 +52,7 @@ public class MainActivity extends BaseActivity{
         datas.add("发送短信");//11
         datas.add("扫描二维码");//12
         datas.add("播放器");//13
+        datas.add("h5交互");//14
 
 
 
@@ -138,6 +140,10 @@ public class MainActivity extends BaseActivity{
                         case 13:
                             intent=new Intent();
                             intent.setClass(MainActivity.this, PlayerActivity.class);
+                            break;
+                        case 14:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, HtmlfAct.class);
                             break;
 
                     }

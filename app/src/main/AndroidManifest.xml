@@ -69,6 +69,7 @@
         <activity android:name=".QRcode.QRcodeActivity"/>
         <activity android:name=".QRcode.CaptureActivity"/>
         <activity android:name=".SplashAndGuide.Guideactivity"/>
+        <activity android:name=".h5.HtmlfAct"/>
         <activity android:name=".SplashAndGuide.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
