@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.lsq.learn.QRcode.QRcodeActivity;
-import com.lsq.learn.ampm.AmPmActivity;
+import com.lsq.learn.command.CommandActivity;
 import com.lsq.learn.baiduMap.BaiduMapActivity;
 import com.lsq.learn.broadcast.NetchangActivity;
 import com.lsq.learn.check.CheckActivity;
@@ -27,7 +27,6 @@ import com.lsq.learn.save.saveActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class MainActivity extends BaseActivity{
     private RecyclerView rec_main;
@@ -123,7 +122,7 @@ public class MainActivity extends BaseActivity{
                             break;
                         case 9:
                             intent=new Intent();
-                            intent.setClass(MainActivity.this, AmPmActivity.class);
+                            intent.setClass(MainActivity.this, CommandActivity.class);
                             break;
                         case 10:
                             intent=new Intent();

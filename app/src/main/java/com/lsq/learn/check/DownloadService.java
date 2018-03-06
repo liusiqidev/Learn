@@ -153,16 +153,16 @@ public class DownloadService extends Service {
     }
 
 
-    public static interface callBack {
-        public void onServiceProgress(int progress);
+    public  interface callBack {
+         void onServiceProgress(int progress);
 
-        public void onServiceSuccess();
+         void onServiceSuccess();
 
-        public void onServicePaused();
+         void onServicePaused();
 
-        public void onServiceFailed();
+         void onServiceFailed();
 
-        public void onServiceCanceled();
+         void onServiceCanceled();
     }
 
     public void setCallBack(callBack callBack) {
