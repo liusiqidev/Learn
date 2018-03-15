@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
@@ -47,8 +48,8 @@ public class HtmlfAct extends BaseActivity {
      * @time 18-3-5
      */
     private void init() {
-//        WebSettings webSettings=htmlWeb.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
+        WebSettings webSettings=htmlWeb.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
     }
 
@@ -62,8 +63,8 @@ public class HtmlfAct extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        htmlWeb.onResume();
-//        htmlWeb.pauseTimers();
+        htmlWeb.onResume();
+        htmlWeb.pauseTimers();
     }
 
     @Override
