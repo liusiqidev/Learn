@@ -23,6 +23,9 @@ import butterknife.OnClick;
 public class HtmlfAct extends BaseActivity {
     private static final String TAG = "HtmlfAct";
 
+
+
+
     @BindView(R.id.html_web)
     WebView htmlWeb;
     @BindView(R.id.main_btn)
