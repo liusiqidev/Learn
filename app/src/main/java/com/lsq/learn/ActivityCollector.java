@@ -10,14 +10,28 @@ import java.util.List;
  */
 
 public class ActivityCollector {
-    private static List<Activity> activities=new ArrayList<>();
-    public static void addActivity(Activity activity){
+    private List<Activity> activities=new ArrayList<>();
+    private static ActivityCollector instance;
+    public static ActivityCollector getInstance(){
+        if (instance==null){
+            synchronized (ActivityCollector.class){
+                if (instance==null){
+                    instance=new ActivityCollector();
+                }
+            }
+        }
+        return instance;
+    }
+    private  ActivityCollector() {
+    }
+
+    public void addActivity(Activity activity){
         activities.add(activity);
     }
-    public static void removeActivity(Activity activity){
+    public void removeActivity(Activity activity){
         activities.remove(activity);
     }
-    public static void finishall(){
+    public void finishall(){
         for (Activity activity:activities){
             if (!activity.isFinishing())
                 activity.finish();

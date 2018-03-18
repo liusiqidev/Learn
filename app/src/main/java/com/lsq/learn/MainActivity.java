@@ -24,6 +24,7 @@ import com.lsq.learn.player.PlayerActivity;
 import com.lsq.learn.recyclerView.RecyclerActivity;
 import com.lsq.learn.newsActivity.NewsActivity;
 import com.lsq.learn.save.saveActivity;
+import com.lsq.learn.weather.WeatherMainAct;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +53,7 @@ public class MainActivity extends BaseActivity{
         datas.add("扫描二维码");//12
         datas.add("播放器");//13
         datas.add("h5交互");//14
+        datas.add("天气");//15
 
 
 
@@ -143,6 +145,10 @@ public class MainActivity extends BaseActivity{
                         case 14:
                             intent=new Intent();
                             intent.setClass(MainActivity.this, HtmlfAct.class);
+                            break;
+                        case 15:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, WeatherMainAct.class);
                             break;
 
                     }

@@ -25,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: " + getClass().getSimpleName());
-        ActivityCollector.addActivity(this);
+        ActivityCollector.getInstance().addActivity(this);
     }
 
     @Override
@@ -60,7 +60,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        ActivityCollector.removeActivity(this);
+        ActivityCollector.getInstance().removeActivity(this);
         super.onDestroy();
         Log.d(TAG, "onDestroy: " + getClass().getSimpleName());
     }
@@ -84,7 +84,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            ActivityCollector.finishall();
+                            ActivityCollector.getInstance().finishall();
                             Intent intent = new Intent();
                             intent.setClass(context, MainActivity.class);
                             context.startActivity(intent);

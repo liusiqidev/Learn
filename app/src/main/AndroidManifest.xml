@@ -74,6 +74,7 @@
         <activity android:name=".h5.HtmlfAct"/>
         <activity android:name=".myView.MyViewActivity"/>
         <activity android:name=".player.PlayerActivity"/>
+        <activity android:name=".weather.WeatherMainAct"/>
 
         <activity android:name=".SplashAndGuide.SplashActivity">
             <intent-filter>
