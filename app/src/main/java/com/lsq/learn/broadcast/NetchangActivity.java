@@ -95,7 +95,7 @@ public class NetchangActivity extends BaseActivity {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            ActivityCollector.finishall();
+            ActivityCollector.getInstance().finishall();
         }
     }
     class  LocalReceive extends BroadcastReceiver{
