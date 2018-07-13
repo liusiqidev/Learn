@@ -23,6 +23,7 @@ import com.lsq.learn.phoneState.PhoneStateActivity;
 import com.lsq.learn.player.PlayerActivity;
 import com.lsq.learn.recyclerView.RecyclerActivity;
 import com.lsq.learn.newsActivity.NewsActivity;
+import com.lsq.learn.retrofit.RetrofitAct;
 import com.lsq.learn.save.saveActivity;
 import com.lsq.learn.weather.WeatherMainAct;
 
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity{
         datas.add("播放器");//13
         datas.add("h5交互");//14
         datas.add("天气");//15
+        datas.add("retrofit");//16
 
 
 
@@ -149,6 +151,10 @@ public class MainActivity extends BaseActivity{
                         case 15:
                             intent=new Intent();
                             intent.setClass(MainActivity.this, WeatherMainAct.class);
+                            break;
+                        case 16:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, RetrofitAct.class);
                             break;
 
                     }

@@ -37,7 +37,6 @@ dependencies {
     // https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor
     compile group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '3.10.0'
 
-
 // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxandroid
     compile group: 'io.reactivex.rxjava2', name: 'rxandroid', version: '2.0.2'
 // https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava
