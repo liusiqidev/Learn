@@ -18,6 +18,7 @@ import com.lsq.learn.broadcast.NetchangActivity;
 import com.lsq.learn.check.CheckActivity;
 import com.lsq.learn.fragment.FragmentActivity;
 import com.lsq.learn.h5.HtmlfAct;
+import com.lsq.learn.myView.MyViewActivity;
 import com.lsq.learn.permission.checkPermissionsActivity;
 import com.lsq.learn.phoneState.PhoneStateActivity;
 import com.lsq.learn.player.PlayerActivity;
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity{
         datas.add("h5交互");//14
         datas.add("天气");//15
         datas.add("retrofit");//16
+        datas.add("自定义绘制");//17
 
 
 
@@ -155,6 +157,10 @@ public class MainActivity extends BaseActivity{
                         case 16:
                             intent=new Intent();
                             intent.setClass(MainActivity.this, RetrofitAct.class);
+                            break;
+                        case 17:
+                            intent=new Intent();
+                            intent.setClass(MainActivity.this, MyViewActivity.class);
                             break;
 
                     }

@@ -18,6 +18,6 @@ public class MyViewActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(new GameView(this));
+//        setContentView(new GameView(this));
     }
 }
