@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
+import android.widget.ImageView;
 
 /**
  * Created by lsq on 2017/8/15.
@@ -16,6 +17,7 @@ public class GameView extends View {
     public GameView(Context context) {
         super(context);
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
