@@ -20,7 +20,7 @@ import com.lsq.learn.myView.utils.DrawUtil;
  * Created by lsq on 18-7-17.
  */
 
-public class JobView extends View {
+public class Job06View extends View {
     private static float PADDING = DrawUtil.dptoPixel(10);
     private Paint headpaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint textpaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -36,15 +36,15 @@ public class JobView extends View {
 
     private static final String TAG = "JobView";
 
-    public JobView(Context context) {
+    public Job06View(Context context) {
         super(context);
     }
 
-    public JobView(Context context, @Nullable AttributeSet attrs) {
+    public Job06View(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public JobView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public Job06View(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

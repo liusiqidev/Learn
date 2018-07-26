@@ -62,16 +62,16 @@
         <activity android:name=".QRcode.CaptureActivity" />
         <activity android:name=".SplashAndGuide.Guideactivity" />
         <activity android:name=".h5.HtmlfAct" />
-        <activity android:name=".myView.MyViewActivity" />
-        <activity android:name=".player.PlayerActivity" />
-        <activity android:name=".weather.WeatherMainAct" />
-        <activity android:name=".SplashAndGuide.SplashActivity">
+        <activity android:name=".myView.MyViewActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".player.PlayerActivity" />
+        <activity android:name=".weather.WeatherMainAct" />
+        <activity android:name=".SplashAndGuide.SplashActivity"/>
 
         <receiver
             android:name=".broadcast.BootCompleteReceiver"
